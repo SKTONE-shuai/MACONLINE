@@ -1,0 +1,55 @@
+### 二进制(Binaries)包
+
+#### yum安装
+
+>  在线下载并安装rpm包，适用于CentOS、Fedora、RedHat及类似系统
+
+- **yum install epel-releas** ：安装第三方yum源EPEL（企业版 Linux 附加软件包的简称）
+- **yum repolist enabled** ：显示可用的源仓库（/etc/yum.repos.d/目录下配置）
+- **yum install yum-fastestmirror** ：自动选择最快的yum源
+- **yum list installed |grep java** ：列出已安装的软件（查看已安装的JDK）
+- **yum remove java-1.8.0-openjdk.x86_64** ：卸载软件（卸载JDK）
+- **yum list java* ** ：列出已安装和可安装的软件（查看yum库中的JDK包）
+- **yum install [-y] java-1.8.0-openjdk** ：安装软件JDK(-y自动安装)（推荐这种方式安装）
+- **yum install docker-ce-18.03.1.ce** ：安装指定版本的软件（已知docker-ce.x86_64 18.03.1.ce-1.el7.centos，则rpm包名为docker-ce-18.03.1.ce-1.el7.centos.x86_64.rpm）
+- **yum check-update [kernel] ** ：列出所有可更新的软件（检查更新kernel）
+- **yum update tomcat** ：更新软件（可所有）
+- **rpm -ql 软件名称** ：查询yum安装路径（软件名称可通过rpm -qa|grep java）
+- **yum info kernel** ：查看软件（kernel）的信息
+- **yum clean all** ：（清除缓存，使最新的yum配置生效）
+
+##### yum安装常用工具
+
+- **yum install -y unzip zip** ：安装压缩、解压缩命令（zip、unzip）
+
+#### rpm包手动下载安装
+
+>  yum中没有时用，适用于CentOS、Fedora、RedHat及类似系统；
+
+- **wget -P /opt [https://](https://sourceforge.net/projects/nmon/files/nmon16e_mpginc.tar.gz)网址** ：下载到/opt目录
+- **rpm -ivh wps-office-版本.x86_64.rpm** :安装rpm包（包要先下载）（要先装依赖包）
+- **rpm -e wps-office** ：卸载软件（注意不要软件名不要版本号）
+- **rpm -qa |grep wps** ：查看安装的rpm包（可用于查询rpm包是否被安装）
+- **rpm -ql 软件名称** ：查看rpm包安装路径（软件名称可通过rpm -qa|grep java）
+
+#### apt方式安装
+
+>  安装deb包，类似yum安装，适用于Debian, Ubuntu 以及类似系统；
+
+- **apt-get install aptitude** ：安装aptitude工具,实现依赖自动安装，依赖版本自动降级或升级
+- **aptitude install 软件** ：安装软件（推荐这种方式安装）
+- **apt-cache search 软件** ：搜索软件
+- **apt-get install 软件** ：安装软件
+- **apt-get purge 软件** ：卸载软件（包括配置文件，只删除软件purge换成remove）
+- **apt-get upgrade** ：更新所有已安装的软件包
+- **apt-get update** ：升级列表中的软件包
+- **apt-get clean** ：从下载的软件包中清理缓存
+
+#### deb包安装
+
+>  适用于Debian, Ubuntu 以及类似系统；
+
+- **dpkg -i package.deb** ：安装一个 deb 包
+- **dpkg -r package_name** ：从系统删除一个 deb 包
+- **dpkg -l |grep chrome** ：查询系统中所有已经安装的 deb 包
+- **dpkg -L 软件名称** ：查软件安装的文件
